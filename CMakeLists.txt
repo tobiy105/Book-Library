@@ -15,6 +15,6 @@ set(CMAKE_C_FLAGS "-std=c99 -fdump-rtl-expand")
 add_executable(library main.c book_management.c user_management.c)
 
 #executable for the creation of unit test.
-add_executable(unit_test unit_tests-1.c Unity/src/unity.c user_management.c book_management.c)
+add_executable(unit_tests unit_tests-1.c Unity/src/unity.c user_management.c book_management.c)
 
 
