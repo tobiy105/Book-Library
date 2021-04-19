@@ -51,5 +51,10 @@ struct BookArray find_book_by_author (const char *author);
 //provided title can be found. The length of the array is also recorded in the returned structure, with 0 in case
 //array is the null pointer.
 struct BookArray find_book_by_year (unsigned int year);
+struct BookArray library_books;
+int create_book_array();
+int print_books(struct BookArray printbook);
+int borrow_book(char *username, char *title, char *author, unsigned int year);
+int return_book(char * username, char * title, char * author, unsigned int year);
 
 #endif
