@@ -88,6 +88,7 @@
         int add = add_book(newbook);
 		TEST_ASSERT_EQUAL_INT (0, add);
 	}
+
 	//test for removing a book
 	void test_remove_book() {
 		struct Book newbook;
@@ -102,6 +103,68 @@
 		TEST_ASSERT_EQUAL_INT (0, remove);
 	}
 
+	//test for finding a book by a title
+	void test_find_book_by_title() {
+		
+		char *title;
+		title = (char *) malloc(50*sizeof(char));
+		title = TEST_TITLE;
+		int test = print_books(find_book_by_title(title));
+		TEST_ASSERT_EQUAL_INT (0, test);
+	}
+
+	//test for finding a book by a author
+	void test_find_book_by_author() {
+		char *author;
+		author = (char *) malloc(50*sizeof(char));
+		author = TEST_TITLE;
+		int test = print_books(find_book_by_title(author));
+		TEST_ASSERT_EQUAL_ (0, test);
+	}
+
+	//test for finding a book by a year
+	void test_find_book_by_year() {
+		int test = print_books(find_book_by_title(2021));
+		TEST_ASSERT_EQUAL_INT (0, test);
+	}
+
+	//test for borrowing a book
+	void test_borrow_book() {
+		char temp;
+        char temp2;
+        char * title;
+        title = (char * ) malloc(50 * sizeof(char));
+		title = "TEST_TITLE";
+        char * author;
+        author = (char * ) malloc(50 * sizeof(char));
+		author = "TEST_AUTHORS";
+        unsigned int year;
+		year = 2022
+        char * username;
+        username = (char * ) malloc(20 * sizeof(char));
+		username = "User_Test";
+        int test = borrow_book(username, title, author, year);
+		TEST_ASSERT_EQUAL_INT (0, test);
+	}
+
+	//test for returning a book
+	void test_return_book() {
+		char temp;
+        char temp2;
+        char * title;
+        title = (char * ) malloc(50 * sizeof(char));
+		title = "TEST_TITLE";
+        char * author;
+        author = (char * ) malloc(50 * sizeof(char));
+		author = "TEST_AUTHORS";
+        unsigned int year;
+		year = 2022
+        char * username;
+        username = (char * ) malloc(20 * sizeof(char));
+		username = "User_Test";
+        int test = return_book(username, title, author, year);
+		TEST_ASSERT_EQUAL_INT (0, test);
+	}
 
 
 void setUp() {
@@ -120,7 +183,12 @@ int main() {
 	RUN_TEST(test_login);
 	RUN_TEST(test_admin_login);
 	RUN_TEST(test_add_book);
-	RUN_TEST(test_remove_book);?
+	RUN_TEST(test_remove_book);
+	RUN_TEST(test_find_book_by_title);
+	RUN_TEST(test_find_book_by_author);
+	RUN_TEST(test_find_book_by_year);
+	RUN_TEST(test_borrow_book);
+	RUN_TEST(test_return_book);
 
 	return UNITY_END();
 }
