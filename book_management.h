@@ -52,9 +52,11 @@ struct BookArray find_book_by_author (const char *author);
 //array is the null pointer.
 struct BookArray find_book_by_year (unsigned int year);
 struct BookArray library_books;
-int create_book_array();
+//prints the array of books
 int print_books(struct BookArray printbook);
+//return zero if the book was successfully saved on a file
 int borrow_book(char *username, char *title, char *author, unsigned int year);
+//return zero if the book was successfully removed from a file
 int return_book(char * username, char * title, char * author, unsigned int year);
 
 #endif

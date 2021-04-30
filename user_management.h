@@ -7,12 +7,25 @@ struct user
     char *password;
     unsigned int type;
 };
-//saves the database of users in the specified file
-//returns 0 if users were stored correctly, or an error code otherwise
-int user_register(char *username, char *password, unsigned int type);
 
-// logs user into system
-//returns 0 if its a normal user, return 1 if its a libraian user,else error code
+int user_register(char *username, char *password, unsigned int type);
+/*
+This function opens a a text file called "userandpass" 
+standard c function, fopen, in the mode a.
+The file then prints the a username while leaving a space for the next function
+user_register_password to place in the password. This allows the username(and password)
+to printed into the text file in one line with a space sepearting between the username and password.
+returns 0 on succesful operation.s
+*/
+
+
+/*
+This function is extremely similar to the previous function, user_register_username except
+it stores in a password after the space.
+*/
+
+//int user_login(char *username, char *password)
+
 int login(char *username, char *password);
 
 

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 	//test for normal register
 	void test_user_register(){
 		FILE* file;
@@ -76,7 +77,6 @@
 	//test for adding a book
 	void test_add_book() {
 		FILE * file;
-  		create_book_array();
   		load_books(file);
 		struct Book newbook;
         newbook.title = (char * ) malloc(60 * sizeof(char));
@@ -108,7 +108,7 @@
 		
 		char *title;
 		title = (char *) malloc(50*sizeof(char));
-		title = TEST_TITLE;
+		title = "TEST_TITLE";
 		int test = print_books(find_book_by_title(title));
 		TEST_ASSERT_EQUAL_INT (0, test);
 	}
@@ -117,14 +117,14 @@
 	void test_find_book_by_author() {
 		char *author;
 		author = (char *) malloc(50*sizeof(char));
-		author = TEST_TITLE;
-		int test = print_books(find_book_by_title(author));
+		author = "TEST_AUTHORS";
+		int test = print_books(find_book_by_author(author));
 		TEST_ASSERT_EQUAL_ (0, test);
 	}
 
 	//test for finding a book by a year
 	void test_find_book_by_year() {
-		int test = print_books(find_book_by_title(2021));
+		int test = print_books(test_find_book_by_year(2021));
 		TEST_ASSERT_EQUAL_INT (0, test);
 	}
 
@@ -139,7 +139,7 @@
         author = (char * ) malloc(50 * sizeof(char));
 		author = "TEST_AUTHORS";
         unsigned int year;
-		year = 2022
+		year = 2021;
         char * username;
         username = (char * ) malloc(20 * sizeof(char));
 		username = "User_Test";
@@ -158,13 +158,14 @@
         author = (char * ) malloc(50 * sizeof(char));
 		author = "TEST_AUTHORS";
         unsigned int year;
-		year = 2022
+		year = 2021;
         char * username;
         username = (char * ) malloc(20 * sizeof(char));
 		username = "User_Test";
         int test = return_book(username, title, author, year);
 		TEST_ASSERT_EQUAL_INT (0, test);
 	}
+
 
 
 void setUp() {

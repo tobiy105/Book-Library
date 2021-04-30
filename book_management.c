@@ -24,10 +24,17 @@ int store_books(FILE * file){
         fclose(file);
         return 0;
     }
-
+    
+    
 }
 
 int load_books(FILE * file){
+  library_books.array = (struct Book * ) malloc(100 * sizeof(struct Book));
+  for (int i = 0; i < 100; i++) {
+    library_books.array[i].title = (char * ) malloc(50 * sizeof(char));
+    library_books.array[i].authors = (char * ) malloc(50 * sizeof(char));
+
+  }
   library_books.length = 0;
   file = fopen("books.txt", "a+");
   fclose(file);
@@ -56,16 +63,6 @@ int load_books(FILE * file){
   return 0;
 
 }
-//posibly to get rid of this function
-int create_book_array() {
-  library_books.array = (struct Book * ) malloc(100 * sizeof(struct Book));
-  for (int i = 0; i < 100; i++) {
-    library_books.array[i].title = (char * ) malloc(50 * sizeof(char));
-    library_books.array[i].authors = (char * ) malloc(50 * sizeof(char));
-
-  }
-  return 0;
-}
 
 int add_book(struct Book book){
   FILE * file;  
@@ -76,7 +73,6 @@ int add_book(struct Book book){
   return 0;
     
 }
-
 int remove_book(struct Book book){
   FILE * file;
   
@@ -91,11 +87,15 @@ int remove_book(struct Book book){
                 return 0;
             }
         }
+    
+      
     }
   }
   
+  
   printf("Error:  Could not find book\n Please check you have typed the book's details correctly!\n");
   return -1;
+
   
 }
 
@@ -112,7 +112,7 @@ struct BookArray find_book_by_title (const char *title){
     }
   }
   if (titles.length == 0) {
-    printf("The book you have searched for can't be found :/.\nPlease ENSURE you used * in place of spaces.\n");
+    printf("The book you have searched for can't be found\n Please check you have typed the book's details correctly!\n");
     titles.array = NULL;
 
   } 
@@ -135,7 +135,7 @@ struct BookArray find_book_by_author (const char *author){
     }
   }
   if (authors.length == 0) {
-    printf("The book you have searched for can't be found :/.\nPlease ENSURE you used * in place of spaces.\n");
+    printf("The book you have searched for can't be found\n Please check you have typed the book's details correctly!\n");
     authors.array = NULL;
 
   } else {
@@ -157,7 +157,7 @@ struct BookArray find_book_by_year (unsigned int year){
     }
   }
   if (date_year.length == 0) {
-    printf("The book you have searched for can't be found :/.\nPlease ENSURE you type in the correct year(numbers only).\n");
+    printf("The book you have searched for can't be found\n Please check you have typed the book's details correctly!\n");
     date_year.array = NULL;
 
   } else {
@@ -286,7 +286,6 @@ int return_book(char * username, char * title, char * author, unsigned int year)
     if (strcmp(title, library_books.array[i].title) == 0) {
       if (strcmp(author, library_books.array[i].authors) == 0) {
         if (year == library_books.array[i].year) {
-          //  
           copy = i;
           library_books.array[i].copies++;
           store_books(file);
