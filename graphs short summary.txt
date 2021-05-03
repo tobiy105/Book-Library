@@ -1,0 +1,4 @@
+The original code had unnecessary parts of code, where the menu and library menu had similar code. 
+So I combined them make into one menu where the librarian functions will only appear in the menu if the account is a librarian. 
+I also got rid of create_book_array function and implemented the code into load_books, reducing the number of functions. 
+These implementations improve the modularity of the code.

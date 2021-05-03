@@ -81,7 +81,9 @@ int remove_book(struct Book book){
         if (strcmp(book.authors, library_books.array[i].authors) == 0) {
             if (book.year == library_books.array[i].year) {
                 library_books.array[i] = library_books.array[i + 1];
-                book = library_books.array[i + 1];
+                for(int j=i; j<library_books.length; j++){
+                  library_books.array[j] = library_books.array[j + 1];
+                }
                 library_books.length--;
                 store_books(file);
                 return 0;

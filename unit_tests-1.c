@@ -119,12 +119,12 @@
 		author = (char *) malloc(50*sizeof(char));
 		author = "TEST_AUTHORS";
 		int test = print_books(find_book_by_author(author));
-		TEST_ASSERT_EQUAL_ (0, test);
+		TEST_ASSERT_EQUAL_INT (0, test);
 	}
 
 	//test for finding a book by a year
 	void test_find_book_by_year() {
-		int test = print_books(test_find_book_by_year(2021));
+		int test = print_books(find_book_by_year(2021));
 		TEST_ASSERT_EQUAL_INT (0, test);
 	}
 
